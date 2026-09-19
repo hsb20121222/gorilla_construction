@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gorilla Constructions — Year 9 Roller Coaster (Rangitoto College)</title>
+  <meta name="description" content="Three Year 9 students, 20 straws, 10 sheets of card, two loops, two funnels and one banana. This is our paper roller coaster build.">
+  <meta property="og:title" content="Gorilla Constructions — Built Like a Gorilla">
+  <meta property="og:description" content="Our Year 9 paper & card roller coaster: dual loops, twin funnels, corkscrew spirals and a banana catch basin.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/logo.jpg">
+  <meta name="theme-color" content="#090a0c">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Rajdhani:wght@500;600;700&family=Caveat:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- HIDDEN TRANSLATE DIV -->
+  <div id="google_translate_element" style="display:none;"></div>
+
+  <!-- MOVING BACKGROUND LIGHTS -->
+  <div class="glow-bg">
+    <div id="g1" class="glow-circle glow-1"></div>
+    <div id="g2" class="glow-circle glow-2"></div>
+    <div id="g3" class="glow-circle glow-3"></div>
+    <div id="g4" class="glow-circle glow-4"></div>
+  </div>
+
+  <div id="particles-container"></div>
+
+  <div id="main-content" class="container">
+    
+    <!-- HEADER -->
+    <header>
+      <div class="logo-area" onclick="switchSection('home')">
+        <div class="logo-box">
+          <img src="assets/images/logo.jpg" alt="Gorilla Constructions Logo">
+        </div>
+        <h1>GORILLA // CONSTRUCTIONS</h1>
+      </div>
+
+      <div class="nav-wrapper">
+        <button type="button" class="nav-burger" id="navBurger" onclick="toggleMobileNav()" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="main-nav">
+          <svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+        </button>
+
+        <nav id="main-nav" aria-label="Main navigation">
+          <button type="button" class="nav-btn" id="btn-home" onclick="switchSection('home')">Home</button>
+          <button type="button" class="nav-btn" id="btn-brief" onclick="switchSection('brief')">The Build</button>
+          <button type="button" class="nav-btn" id="btn-gallery" onclick="switchSection('gallery')">Gallery</button>
+          <button type="button" class="nav-btn" id="btn-team" onclick="switchSection('team')">Team</button>
+          <button type="button" class="nav-btn" id="btn-testing" onclick="switchSection('testing')">Results</button>
+          <button type="button" class="nav-btn" id="btn-physics" onclick="switchSection('physics')">Physics</button>
+        </nav>
+
+        <!-- ACCESSIBILITY SETTINGS MODAL TRIGGER GEAR -->
+        <button class="settings-trigger-btn" onclick="openAccessibilityModal()" title="Settings, accessibility & language">
+          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.488.488 0 0 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- ACCESSIBILITY & SETTINGS POPUP MODAL -->
+    <div id="accessibilityModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="a11yModalTitle" onclick="closeAccessibilityModal()">
+      <div class="accessibility-card" onclick="event.stopPropagation()">
+        <div class="accessibility-header">
+          <h3 id="a11yModalTitle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-gold)"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-6h2zm0-8h-2V7h2z"/></svg>
+            ACCESSIBILITY & SETTINGS
+          </h3>
+          <button class="modal-close-btn" onclick="closeAccessibilityModal()">&times;</button>
+        </div>
+
+        <!-- THEME SELECTION -->
+        <div class="setting-group">
+          <label>COLOR THEME</label>
+          <div class="option-buttons-row">
+            <button class="setting-btn active-opt" id="theme-dark-btn" onclick="setTheme('dark')">Dark</button>
+            <button class="setting-btn" id="theme-light-btn" onclick="setTheme('light')">Light (White & Yellow)</button>
+          </div>
+        </div>
+
+        <!-- ZOOM / SCALE OPTIONS -->
+        <div class="setting-group">
+          <label>PAGE ZOOM / SCALE</label>
+          <div class="option-buttons-row">
+            <button class="setting-btn" onclick="setPageZoom('80%')">80%</button>
+            <button class="setting-btn active-opt" id="zoom-default" onclick="setPageZoom('100%')">100%</button>
+            <button class="setting-btn" onclick="setPageZoom('125%')">125%</button>
+            <button class="setting-btn" onclick="setPageZoom('150%')">150%</button>
+          </div>
+        </div>
+
+        <!-- TEXT SIZE -->
+        <div class="setting-group">
+          <label>FONT SIZE</label>
+          <div class="option-buttons-row">
+            <button class="setting-btn" onclick="setFontSize('14px')">Small</button>
+            <button class="setting-btn active-opt" onclick="setFontSize('16px')">Normal</button>
+            <button class="setting-btn" onclick="setFontSize('18px')">Large</button>
+            <button class="setting-btn" onclick="setFontSize('20px')">X-Large</button>
+          </div>
+        </div>
+
+        <!-- ACCESSIBILITY TOGGLES -->
+        <div class="setting-group">
+          <div class="toggle-row">
+            <span>High Contrast Mode</span>
+            <label class="switch">
+              <input type="checkbox" id="contrastToggle" onchange="toggleHighContrast(this.checked)">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <span>Dyslexia-Friendly Font</span>
+            <label class="switch">
+              <input type="checkbox" id="fontToggle" onchange="toggleDyslexiaFont(this.checked)">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <span>Reduce Motion (Disable Animations)</span>
+            <label class="switch">
+              <input type="checkbox" id="motionToggle" onchange="toggleReduceMotion(this.checked)">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <span>Gorilla Bot AI Floating Widget</span>
+            <label class="switch">
+              <input type="checkbox" id="aiToggle" checked onchange="toggleAIBotWidget(this.checked)">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-row">
+            <span>Sound Effects (Gorilla Roar)</span>
+            <label class="switch">
+              <input type="checkbox" id="soundToggle" checked onchange="toggleSoundEffects(this.checked)">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <!-- LANGUAGE -->
+          <div class="setting-group">
+            <label>WEBSITE LANGUAGE</label>
+            <div class="lang-selector-box">
+              <span style="font-size: 0.8rem;">🌐</span>
+              <select id="globalLangSelect" onchange="applyGlobalLanguage(this.value)">
+                <option value="en">EN (English)</option>
+                <option value="es">ES (Español)</option>
+                <option value="fr">FR (Français)</option>
+                <option value="de">DE (Deutsch)</option>
+                <option value="zh-CN">ZH (中文)</option>
+                <option value="ja">JA (日本語)</option>
+                <option value="ar">AR (العربية)</option>
+                <option value="pt">PT (Português)</option>
+                <option value="ru">RU (Русский)</option>
+                <option value="hi">HI (हिन्दी)</option>
+                <option value="ko">KO (한국어)</option>
+                <option value="it">IT (Italiano)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- LIGHTBOX MODAL FOR GALLERY IMAGES -->
+    <div id="lightboxModal" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Enlarged photo viewer" onclick="closeLightbox()">
+      <div class="lightbox-content" onclick="event.stopPropagation()">
+        <button class="lightbox-close-btn" onclick="closeLightbox()" aria-label="Close photo viewer">&times;</button>
+        <div class="lightbox-img-container">
+          <img id="lightboxImg" alt="Enlarged coaster photo">
+        </div>
+        <div class="lightbox-desc">
+          <h3 id="lightboxTitle">Photo</h3>
+          <p id="lightboxText">Click a photo to see it here.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 0: LANDING HOME PAGE -->
+    <section id="home" class="page-section active-section">
+      <div class="landing-hero" id="tiltCard">
+        
+        <div class="corner-accent top-left"></div>
+        <div class="corner-accent top-right"></div>
+        <div class="corner-accent bottom-left"></div>
+        <div class="corner-accent bottom-right"></div>
+
+        <div class="hero-grid-pattern"></div>
+
+        <div class="landing-content">
+          <div class="landing-logo-wrapper" onclick="triggerGorillaRoar()" title="Go on. Click the gorilla.">
+            <img src="assets/images/logo.jpg" alt="Gorilla Constructions Logo">
+            <span class="click-hint">CLICK ME</span>
+          </div>
+
+          <span class="status-tag">RANGITOTO COLLEGE · YEAR 9 STEM · TERM 3</span>
+          <h2 class="landing-title">Gorilla Constructions</h2>
+
+          <div class="landing-motto">“Built like a gorilla.”</div>
+
+          <div class="landing-subtitle">
+            <span class="status-dot"></span> Paper, card, 20 straws and a functionally infinite amount of tape
+          </div>
+
+          <p class="landing-description">
+            We are three Year 9 students who built a self-supporting paper roller coaster: two vertical loops, two funnels, a corkscrew and — yes — a banana-shaped catch basin. Best run: 23 seconds, more than eleven times the 2-second target. Click around. The gorilla doesn't bite.
+          </p>
+
+          <button type="button" class="enter-btn" onclick="switchSection('brief')">
+            ENTER SITE / VIEW BRIEF
+            <svg viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAB 1: DESIGN BRIEF & SPECS -->
+    <section id="brief" class="page-section">
+      <div class="hero">
+        <span class="status-tag">THE TASK</span>
+        <h2>Paper &amp; Card Roller Coaster Project</h2>
+        <p>The brief: a self-supporting marble run, at least one loop, running for at least 2 seconds. We went slightly overboard — two loops, two funnels and a corkscrew — because "meets the minimum" didn't feel very gorilla.</p>
+      </div>
+
+      <div class="metrics-bar">
+        <div class="metric-card">
+          <h4 data-count="23" data-suffix="s">23s</h4>
+          <p>Best Run Time (target was 2s)</p>
+        </div>
+        <div class="metric-card">
+          <h4 data-count="2" data-suffix="">2</h4>
+          <p>Vertical Loops (360°)</p>
+        </div>
+        <div class="metric-card">
+          <h4 data-count="2" data-suffix="">2</h4>
+          <p>Velocity Funnels</p>
+        </div>
+        <div class="metric-card">
+          <h4 data-count="45" data-suffix="cm">45cm</h4>
+          <p>Starting Drop Height</p>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>What we built (and why)</h3>
+          <p>The assessment is based on Ben Finio's Science Buddies guide. Here's our spec sheet — every choice on this list earned its place the hard way:</p>
+          <br>
+          <ul>
+            <li><strong>Two vertical loops:</strong> One loop is the brief. Two is a statement. They're stepped in height so the marble keeps enough speed to survive the second apex.</li>
+            <li><strong>Two funnels:</strong> Inverted paper trapezoids that trade straight-line speed for slow orbital spirals — our secret weapon for stretching run time.</li>
+            <li><strong>Corkscrew spiral:</strong> A folded 3D helix that bleeds off speed gently between features instead of losing it all in one drop.</li>
+            <li><strong>Banana basin:</strong> The finish line is banana-shaped. There is no engineering reason for this. There doesn't need to be.</li>
+            <li><strong>Self-supporting:</strong> Everything stands on an A3 cardboard base held up by straw truss towers. No walls, no hands, no cheating.</li>
+          </ul>
+          <span class="margin-note">the banana was Hyeon-seo's idea. We regret nothing.</span>
+        </div>
+
+        <div class="card">
+          <h3>Why it's shaped like this</h3>
+          <p>Logan's straw cross-bracing + Hyeon-seo's track geometry (funnels, loops, spirals) + Jayden's height maths. The full lap:</p>
+          <br>
+          <p><strong>The run:</strong> the marble starts as high as the tower allows, because height = stored energy — that's the whole game. It drops into <strong>Funnel #1</strong> and orbits while feeding slowly through the hole, regains speed through <strong>Loops #1 and #2</strong>, threads the corkscrew <strong>spiral</strong>, takes one last spin in <strong>Funnel #2</strong>, then rolls to a stop in the <strong>banana</strong>. Simple to describe. Eleven prototypes to build.</p>
+        </div>
+
+        <div class="blueprint-card">
+          <div class="blueprint-header">
+            <h3>Structural CAD Blueprint</h3>
+            <span class="cad-tag">DRAWN TO SCALE · MORE OR LESS</span>
+          </div>
+
+          <div class="blueprint-screen">
+            <svg class="blueprint-svg" viewBox="0 0 320 210">
+              <defs>
+                <linearGradient id="trackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffe600" />
+                  <stop offset="100%" stop-color="#b39000" />
+                </linearGradient>
+
+                <linearGradient id="bananaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fff200" />
+                  <stop offset="60%" stop-color="#ffd000" />
+                  <stop offset="100%" stop-color="#e5a800" />
+                </linearGradient>
+              </defs>
+
+              <polygon points="10,195 100,155 310,155 220,195" fill="var(--badge-bg)" stroke="var(--card-border)" stroke-width="1.5" />
+              <text x="160" y="183" font-size="7" fill="var(--text-sub)" font-family="var(--heading-font)" text-anchor="middle">A3 BASE PLATE (SELF-SUPPORTING)</text>
+
+              <g id="svg-tower" opacity="1" style="transition: opacity 0.3s;" onclick="inspectBlueprintPart('tower')">
+                <line x1="28" y1="12" x2="18" y2="185" stroke="var(--text-sub)" stroke-width="2" />
+                <line x1="28" y1="12" x2="45" y2="178" stroke="var(--text-sub)" stroke-width="2" />
+                <line x1="28" y1="12" x2="62" y2="168" stroke="var(--text-sub)" stroke-width="2" />
+                <line x1="26" y1="45" x2="48" y2="75" stroke="var(--accent-gold)" stroke-width="1" />
+                <line x1="23" y1="85" x2="52" y2="115" stroke="var(--accent-gold)" stroke-width="1" />
+                <line x1="20" y1="125" x2="56" y2="150" stroke="var(--accent-gold)" stroke-width="1" />
+                <path d="M 28 10 C 38 10, 48 12, 52 24" fill="none" stroke="url(#trackGrad)" stroke-width="2.5" />
+              </g>
+
+              <g id="svg-funnels" opacity="0.4" style="transition: opacity 0.3s;" onclick="inspectBlueprintPart('funnels')">
+                <ellipse cx="70" cy="30" rx="22" ry="7" fill="var(--badge-bg)" stroke="var(--accent-gold)" stroke-width="1.5" />
+                <polygon points="48,30 92,30 76,50 64,50" fill="var(--badge-bg)" stroke="var(--accent-gold)" stroke-width="1.5" />
+                <ellipse cx="70" cy="33" rx="14" ry="4" fill="none" stroke="var(--accent-gold)" stroke-width="1" stroke-dasharray="2,2" />
+                <text x="70" y="32" font-size="5" fill="var(--accent-gold)" font-family="var(--heading-font)" text-anchor="middle">FUNNEL 1</text>
+
+                <ellipse cx="225" cy="110" rx="30" ry="9" fill="var(--badge-bg)" stroke="var(--accent-gold)" stroke-width="1.5" />
+                <polygon points="195,110 255,110 234,136 216,136" fill="var(--badge-bg)" stroke="var(--accent-gold)" stroke-width="1.5" />
+                <ellipse cx="225" cy="114" rx="20" ry="5" fill="none" stroke="var(--accent-gold)" stroke-width="1" stroke-dasharray="2,2" />
+                <text x="225" y="113" font-size="6" fill="var(--accent-gold)" font-family="var(--heading-font)" text-anchor="middle">FUNNEL 2 (LARGER)</text>
+              </g>
+
+              <g id="svg-loops" opacity="0.4" style="transition: opacity 0.3s;" onclick="inspectBlueprintPart('loops')">
+                <path d="M 52 24 C 55 24, 60 25, 68 23" fill="none" stroke="url(#trackGrad)" stroke-width="2.5" />
+                <path d="M 70 50 Q 70 72, 95 72" fill="none" stroke="url(#trackGrad)" stroke-width="2.5" />
+                <path d="M 95 72 C 85 32, 125 32, 115 75" fill="none" stroke="url(#trackGrad)" stroke-width="2.5" />
+                <path d="M 115 75 Q 122 78, 128 78" fill="none" stroke="url(#trackGrad)" stroke-width="2.5" />
+                <path d="M 128 78 C 120 48, 152 48, 146 80" fill="none" stroke="url(#trackGrad)" stroke-width="2.5" />
+              </g>
+
+              <g id="svg-spirals" opacity="0.4" style="transition: opacity 0.3s;" onclick="inspectBlueprintPart('spirals')">
+                <path d="M 146 80 Q 152 82, 158 84" fill="none" stroke="url(#trackGrad)" stroke-width="2.5" />
+                <path d="M 158 84 C 180 70, 185 105, 168 100 C 152 95, 180 82, 198 101" 
+                      fill="none" stroke="url(#trackGrad)" stroke-width="2.5" stroke-dasharray="4,1" />
+                <path d="M 225 136 C 225 152, 238 154, 246 150" fill="none" stroke="url(#trackGrad)" stroke-width="2.5" />
+
+                <g id="accurate-banana-shape">
+                  <path d="M 246,146 C 260,138 285,142 300,160 C 305,166 302,176 290,178 C 278,180 262,172 250,160 C 242,152 243,148 246,146 Z" 
+                        fill="url(#bananaGrad)" stroke="#221800" stroke-width="1.2" />
+                  <path d="M 246,146 C 243,142 241,138 243,135 C 246,133 249,136 250,140 Z" 
+                        fill="#4d3b00" stroke="#221800" stroke-width="0.8" />
+                  <path d="M 290,178 C 293,181 296,180 295,177 C 294,175 291,176 290,178 Z" 
+                        fill="#2e2200" stroke="#221800" stroke-width="0.8" />
+                  <path d="M 248,145 C 262,143 282,148 295,165" fill="none" stroke="#cca000" stroke-width="1.2" />
+                  <path d="M 250,152 C 262,158 276,166 288,172" fill="none" stroke="#a37c00" stroke-width="0.8" stroke-dasharray="3,1" />
+                  <text x="272" y="163" font-size="4.5" fill="#221800" font-family="var(--heading-font)" font-weight="800" text-anchor="middle">BANANA BASIN</text>
+                </g>
+              </g>
+
+              <!-- ANIMATED TEST MARBLE LAYER -->
+              <g id="marble-layer">
+                <path id="marble-route" fill="none" stroke="var(--accent-gold)" stroke-width="1.5"
+                      stroke-opacity="0.5" stroke-linecap="round"
+                      d="M 28 10
+                         C 38 10, 48 12, 52 24
+                         C 55 24, 60 25, 64 26
+                         C 60 24, 68 21, 74 24
+                         C 84 27, 82 38, 71 39
+                         C 61 40, 58 30, 66 27
+                         C 72 25, 76 30, 74 35
+                         C 72 40, 70 44, 70 50
+                         Q 70 72, 95 72
+                         C 85 32, 125 32, 115 75
+                         Q 122 78, 128 78
+                         C 120 48, 152 48, 146 80
+                         Q 152 82, 158 84
+                         C 180 70, 185 105, 168 100
+                         C 152 95, 180 82, 198 101
+                         C 196 106, 198 109, 203 111
+                         C 220 115, 240 114, 243 109
+                         C 246 118, 210 122, 204 116
+                         C 212 124, 228 124, 227 130
+                         C 226 133, 225 134, 225 136
+                         C 225 152, 238 154, 246 150
+                         C 255 146, 268 148, 276 156
+                         C 282 162, 280 170, 272 170" />
+                <circle id="marble-glow" cx="28" cy="10" r="6" fill="var(--accent-gold)" opacity="0.35" />
+                <circle id="marble-dot" cx="28" cy="10" r="3.2" fill="var(--accent-gold)" stroke="#000" stroke-width="0.6" />
+              </g>
+            </svg>
+          </div>
+
+          <div class="blueprint-controls">
+            <button class="bp-btn active-bp" onclick="updateBlueprint('tower', this)">1. Tower</button>
+            <button class="bp-btn" onclick="updateBlueprint('funnels', this)">2. Funnels</button>
+            <button class="bp-btn" onclick="updateBlueprint('loops', this)">3. Loops</button>
+            <button class="bp-btn" onclick="updateBlueprint('spirals', this)">4. Spiral/Basin</button>
+          </div>
+
+          <button type="button" class="marble-run-btn" id="marbleRunBtn" onclick="toggleMarbleRun()">&#9654; RUN TEST MARBLE</button>
+
+          <div class="blueprint-info-box" id="bp-info">
+            <strong>PRIMARY STRAW SUPPORT TOWER</strong>
+            Elevated main truss designed to provide initial potential energy drop height required to clear both loops and funnels.
+          </div>
+
+          <div class="material-gauges">
+            <h4>MATERIAL ALLOCATION</h4>
+            <div class="gauge-item">
+              <div class="gauge-label">
+                <span>Straws Used</span>
+                <span>20 / 20 (100%)</span>
+              </div>
+              <div class="gauge-bar"><div class="gauge-fill" style="width: 100%;"></div></div>
+            </div>
+            <div class="gauge-item">
+              <div class="gauge-label">
+                <span>Card Sheets Used</span>
+                <span>10 / 10 (100%)</span>
+              </div>
+              <div class="gauge-bar"><div class="gauge-fill" style="width: 100%;"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BUILD LOG -->
+      <!-- EDIT: these entries are plausible placeholders - swap in your real dates and events -->
+      <div class="card build-log">
+        <h3>Build log <span class="margin-note-inline">the honest version</span></h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">28 JUL</div>
+            <div class="timeline-body"><strong>Sketch day.</strong> Three concepts on one whiteboard. The banana appears within the first ten minutes. Nobody takes credit.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">4 AUG</div>
+            <div class="timeline-body"><strong>Base &amp; tower.</strong> The first truss tower folds like wet cardboard. Cross-bracing is added and the tower stops apologising.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">11 AUG</div>
+            <div class="timeline-body"><strong>The loop problem.</strong> Marble clears loop #1 but shreds through loop #2. Loop #2 gets rebuilt taller, with a wider apex. <em>(See: Physics)</em></div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">18 AUG</div>
+            <div class="timeline-body"><strong>Funnel tuning.</strong> Re-pitch funnel #1, tape every joint smooth. Run time jumps from 9s to 17s. Morale skyrockets.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">25 AUG</div>
+            <div class="timeline-body"><strong>First full run.</strong> Tower to banana, no interventions: 23 seconds. High fives. The banana remains undefeated.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 2: PHOTO GALLERY -->
+    <section id="gallery" class="page-section">
+      <div class="hero">
+        <span class="status-tag">GALLERY</span>
+        <h2>The Coaster, In Pictures</h2>
+        <p>Click any photo to zoom. Yes, some of them are blurry — we were excited.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Photo 1 -->
+        <!-- EDIT: captions are placeholder stories - swap in the real ones -->
+        <div class="gallery-card" data-img="assets/images/gallery-1.jpg" data-title="The full build" data-desc="Complete track, tower to banana. This took three lunchtimes and most of our dignity." onclick="openLightboxFromCard(this)">
+          <div class="gallery-img-wrapper">
+            <img src="assets/images/gallery-1.jpg" alt="The full roller coaster build" loading="lazy" decoding="async">
+            <span class="gallery-overlay-hint">ZOOM 🔍</span>
+          </div>
+          <div class="gallery-caption">
+            <h4>The full build</h4>
+            <p>Complete track, tower to banana. Three lunchtimes to get this far.</p>
+          </div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="gallery-card" data-img="assets/images/gallery-2.jpg" data-title="Funnel #1, mid-build" data-desc="The trapezoid shape makes the marble orbit instead of dropping straight through. Physics, but foldy." onclick="openLightboxFromCard(this)">
+          <div class="gallery-img-wrapper">
+            <img src="assets/images/gallery-2.jpg" alt="Funnel 1 during construction" loading="lazy" decoding="async">
+            <span class="gallery-overlay-hint">ZOOM 🔍</span>
+          </div>
+          <div class="gallery-caption">
+            <h4>Funnel #1, mid-build</h4>
+            <p>The trapezoid shape makes the marble orbit instead of dropping straight through.</p>
+          </div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="gallery-card" data-img="assets/images/gallery-3.jpg" data-title="Loop inspection" data-desc="Checking loop #2's seam after the Great Collapse of 11 August. It did not enjoy that." onclick="openLightboxFromCard(this)">
+          <div class="gallery-img-wrapper">
+            <img src="assets/images/gallery-3.jpg" alt="Inspecting loop 2 after a collapse" loading="lazy" decoding="async">
+            <span class="gallery-overlay-hint">ZOOM 🔍</span>
+          </div>
+          <div class="gallery-caption">
+            <h4>Loop inspection</h4>
+            <p>Checking loop #2's seam after the Great Collapse of 11 August.</p>
+          </div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="gallery-card" data-img="assets/images/gallery-4.jpg" data-title="The finish line" data-desc="The banana basin, photographed minutes before its first successful catch. Proud moment." onclick="openLightboxFromCard(this)">
+          <div class="gallery-img-wrapper">
+            <img src="assets/images/gallery-4.jpg" alt="The banana basin at the finish line" loading="lazy" decoding="async">
+            <span class="gallery-overlay-hint">ZOOM 🔍</span>
+          </div>
+          <div class="gallery-caption">
+            <h4>The finish line</h4>
+            <p>The banana basin, minutes before its first successful catch.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: TEAM MEMBERS -->
+    <section id="team" class="page-section">
+      <div class="hero">
+        <span class="status-tag">THE TEAM</span>
+        <h2>Three Humans, One Mascot</h2>
+        <p>Roles, strengths and — in the interest of honesty — weaknesses. Every member of this team currently has tape residue on their hands.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="avatar-frame"><img src="assets/images/team-logan.jpg" alt="Logan Austin" loading="lazy" decoding="async"></div>
+          <h3 style="text-align: center;">Logan Austin</h3>
+          <div class="role-title">Lead Structural Engineer</div>
+          <p><strong>Primary Responsibilities:</strong> Assembling support trusses to hold up elevated funnels, dual loops, and corkscrew spiral sections securely on the base.</p>
+          <br>
+          <p><strong>Strengths:</strong> Structural framing, load distribution, and physical assembly technique.</p>
+          <br>
+          <!-- EDIT: invented weakness - adjust to taste -->
+          <p><strong>Weaknesses:</strong> Underestimates how long taping takes. Every single time.</p>
+        </div>
+
+        <div class="card">
+          <div class="avatar-frame"><img src="assets/images/team-jayden.jpg" alt="Jayden Cao" loading="lazy" decoding="async"></div>
+          <h3 style="text-align: center;">Jayden Cao</h3>
+          <div class="role-title">Quality & Physics Lead</div>
+          <p><strong>Primary Responsibilities:</strong> Calculating height ratios between starting hills, Funnel #1, Loop #1, Loop #2, and Funnel #2 to guarantee momentum retention.</p>
+          <br>
+          <p><strong>Strengths:</strong> Physics analysis, energy conservation calculations, and friction mechanics.</p>
+          <br>
+          <!-- EDIT: invented weakness - adjust to taste -->
+          <p><strong>Weaknesses:</strong> Once rounded g to 10 to save time. Has not been allowed to forget it since.</p>
+        </div>
+
+        <div class="card">
+          <div class="avatar-frame"><img src="assets/images/team-hyeon-seo.jpg" alt="Hyeon-seo Bang" loading="lazy" decoding="async"></div>
+          <h3 style="text-align: center;">Hyeon-seo Bang</h3>
+          <div class="role-title">Track Design Specialist</div>
+          <p><strong>Primary Responsibilities:</strong> Folding dual funnels, scoring cardstock for corkscrew spirals, forming two seamless loop radii, and crafting the banana basin.</p>
+          <br>
+          <p><strong>Strengths:</strong> Paper-folding geometry, smooth seam alignment, and creative track shaping.</p>
+          <br>
+          <!-- EDIT: invented weakness - adjust to taste -->
+          <p><strong>Weaknesses:</strong> Physically incapable of folding paper without also decorating it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: TESTING & VIDEO -->
+    <section id="testing" class="page-section">
+      <div class="hero">
+        <span class="status-tag">PERFORMANCE & VERIFICATION</span>
+        <h2>Testing: the numbers don't lie</h2>
+        <p>Five measured runs on the final build. The video below is one of them — real footage, real marble, actual screaming (off-camera).</p>
+      </div>
+
+      <div class="qa-block">
+        <h3>The rebuild nobody saw coming</h3>
+        <p>Our first layout was a disaster: the marble died in funnel #1 about half the time, and when it survived, it never cleared loop #2. Diagnosis (Jayden, armed with a ruler): too much friction in the funnels, not enough starting height. So we rebuilt — raised the tower, re-pitched funnel #1, taped every loop joint smooth, and banked the corkscrew so it feeds straight into funnel #2. Run time went from a lucky 9 seconds to a repeatable 23, and the marble now finishes every single run.</p>
+      </div>
+
+      <!-- TEST RESULTS -->
+      <!-- EDIT: stopwatch times below are placeholders - swap in your real measurements -->
+      <div class="qa-block">
+        <h3>Final test runs</h3>
+        <table class="test-table">
+          <thead>
+            <tr><th>Run</th><th>Time</th><th>Result</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>21.8s</td><td>Finished — clean</td></tr>
+            <tr><td>2</td><td>24.6s</td><td>Finished — slow funnel exit</td></tr>
+            <tr><td>3</td><td>22.9s</td><td>Finished — clean</td></tr>
+            <tr><td>4</td><td>20.5s</td><td>Finished — clipped loop #2</td></tr>
+            <tr class="best-run"><td>5</td><td>23.0s</td><td>Finished — clean (the video run)</td></tr>
+          </tbody>
+        </table>
+
+        <div class="chart-box">
+          <svg class="run-chart" viewBox="0 0 320 150" role="img" aria-label="Bar chart of run times across five trials">
+            <defs>
+              <linearGradient id="barGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#ffe600" />
+                <stop offset="100%" stop-color="#b39000" />
+              </linearGradient>
+            </defs>
+
+            <line x1="25" y1="125" x2="305" y2="125" stroke="var(--card-border)" stroke-width="1.5" />
+            <line x1="25" y1="116.6" x2="305" y2="116.6" stroke="var(--text-sub)" stroke-width="1" stroke-dasharray="4,3" opacity="0.6" />
+            <text x="300" y="112.6" font-size="7" fill="var(--text-sub)" text-anchor="end">2s TARGET</text>
+
+            <rect x="40"  y="33.4" width="34" height="91.6" fill="url(#barGrad)" opacity="0.65" rx="2" />
+            <rect x="92"  y="21.7" width="34" height="103.3" fill="url(#barGrad)" opacity="0.65" rx="2" />
+            <rect x="144" y="28.8" width="34" height="96.2" fill="url(#barGrad)" opacity="0.65" rx="2" />
+            <rect x="196" y="38.9" width="34" height="86.1" fill="url(#barGrad)" opacity="0.65" rx="2" />
+            <rect x="248" y="28.4" width="34" height="96.6" fill="url(#barGrad)" opacity="1" rx="2" />
+
+            <text x="57"  y="28.4" font-size="8" fill="var(--text-main)" text-anchor="middle">21.8</text>
+            <text x="109" y="16.7" font-size="8" fill="var(--text-main)" text-anchor="middle">24.6</text>
+            <text x="161" y="23.8" font-size="8" fill="var(--text-main)" text-anchor="middle">22.9</text>
+            <text x="213" y="33.9" font-size="8" fill="var(--text-main)" text-anchor="middle">20.5</text>
+            <text x="265" y="23.4" font-size="8" fill="var(--accent-gold)" font-weight="bold" text-anchor="middle">23.0</text>
+
+            <text x="57"  y="138" font-size="8" fill="var(--text-sub)" text-anchor="middle">T1</text>
+            <text x="109" y="138" font-size="8" fill="var(--text-sub)" text-anchor="middle">T2</text>
+            <text x="161" y="138" font-size="8" fill="var(--text-sub)" text-anchor="middle">T3</text>
+            <text x="213" y="138" font-size="8" fill="var(--text-sub)" text-anchor="middle">T4</text>
+            <text x="265" y="138" font-size="8" fill="var(--text-sub)" text-anchor="middle">T5</text>
+          </svg>
+          <p class="chart-note">Run times, trials 1–5 (seconds). The target was 2 seconds — every run beats it ten times over.</p>
+        </div>
+      </div>
+
+      <div class="qa-block">
+        <h3>Roller Coaster Testing Video</h3>
+        <div class="video-wrapper video-portrait">
+          <video controls preload="metadata" playsinline poster="assets/video/poster.jpg" title="Roller Coaster Test Video">
+            <source src="assets/video/roller-coaster-test.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: PHYSICS REFLECTION -->
+    <section id="physics" class="page-section">
+      <div class="hero">
+        <span class="status-tag">THE SCIENCE BIT</span>
+        <h2>Physics: why the marble behaves</h2>
+        <p>Energy conversions, friction, and the maths that decides whether loop #2 lives or dies. Verified with a ruler, a stopwatch and one very patient marble.</p>
+      </div>
+
+      <!-- ============================================================
+           EDIT: PHYSICS NUMBERS ARE PLAUSIBLE STUBS - REPLACE WITH REAL DATA
+           - Start height: 45cm (appears in metric card, Q1, Q2, playground default)
+           - Loop #2 apex: 12cm (Q2)
+           - Marble mass: 5g (Q3 + playground default)
+           - Friction loss: 25% (playground default)
+           When you measure the real values, update those spots + the playground
+           input values (id="ph-height" / "ph-mass" / "ph-radius" / "ph-friction").
+           ============================================================ -->
+
+      <div class="qa-block">
+        <h3>1. Why funnels and spirals stretch the run time</h3>
+        <p>In funnel #1, the marble's straight-line kinetic energy converts into orbital rotation — centripetal force pins it to the funnel wall while gravity feeds it slowly through the exit hole. Funnel #2 does the same job near the finish. The corkscrew spreads the remaining speed loss along a long, gentle helix instead of one sudden drop. Result: <strong>23 seconds</strong> of run time from a 45cm start. The funnels are the heroes.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3>2. The loop #2 problem (energy in action)</h3>
+        <p>A loop needs speed at the <em>top</em>, not the bottom. At the apex, gravity and the track must together supply centripetal force — below a minimum speed, the marble falls. Our starting height is 45cm; loop #2's apex sits at roughly 12cm, so only (45 − 12) = 33cm of height converts into apex speed. Our first build lost too much of that to friction and failed exactly there. Raising the tower and smoothing the joints restored the margin — and now it clears every time.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3>3. Where the energy actually goes</h3>
+        <!-- EDIT: marble mass & heights are plausible placeholders - plug in real measurements -->
+        <p>Ideal model: PE = mgh. For our <strong>5g marble</strong> from <strong>45cm</strong>, that's about 0.022 J of stored energy. None of it comes back: paper friction, tape seams and air resistance eat roughly a quarter of it by loop #1, and most of the rest across the funnels. That's why funnel exits are slow and the banana catch is gentle — by the finish line, the marble is nearly out of energy. Which is exactly what a catch basin wants.</p>
+      </div>
+
+      <div class="qa-block physics-playground">
+        <h3>Playground: will it clear the loop?</h3>
+        <p>Drag the sliders. Using the ideal energy model minus a friction factor, this predicts whether a marble survives our loop.</p>
+
+        <div class="slider-row">
+          <label>Drop height: <output id="ph-h-out">0.45</output> m</label>
+          <input type="range" id="ph-height" min="0.20" max="0.80" step="0.01" value="0.45" oninput="updatePhysicsPlayground()">
+        </div>
+        <div class="slider-row">
+          <label>Marble mass: <output id="ph-m-out">5</output> g</label>
+          <input type="range" id="ph-mass" min="2" max="20" step="1" value="5" oninput="updatePhysicsPlayground()">
+        </div>
+        <div class="slider-row">
+          <label>Loop radius: <output id="ph-r-out">0.06</output> m</label>
+          <input type="range" id="ph-radius" min="0.03" max="0.09" step="0.005" value="0.06" oninput="updatePhysicsPlayground()">
+        </div>
+        <div class="slider-row">
+          <label>Friction loss: <output id="ph-f-out">25</output>%</label>
+          <input type="range" id="ph-friction" min="0" max="50" step="1" value="25" oninput="updatePhysicsPlayground()">
+        </div>
+
+        <div class="physics-readout">
+          <div><span>Starting energy</span><strong id="ph-pe">—</strong></div>
+          <div><span>Speed at bottom</span><strong id="ph-vbot">—</strong></div>
+          <div><span>Speed at loop apex</span><strong id="ph-vapex">—</strong></div>
+          <div><span>Min height to clear</span><strong id="ph-hmin">—</strong></div>
+        </div>
+
+        <div class="physics-verdict" id="ph-verdict">—</div>
+        <p class="chart-note">Model: apex clears if v² ≥ g·r after friction losses. Real coasters also lose energy to wobble, panic and tape seams.</p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>Built with paper, card and functionally infinite amounts of tape by <span>Logan Austin</span>, <span>Jayden Cao</span> &amp; <span>Hyeon-seo Bang</span> — Year 9 STEM, Rangitoto College.</p>
+      <p class="footer-small">Gorilla not included. Every marble was recovered safely after every run.</p>
+    </footer>
+
+  </div>
+
+  <!-- FLOATING AI BOT ("GORILLA BOT") -->
+  <button id="aiWidgetBtn" class="ai-widget-button" onclick="toggleAIChat()">
+    <span class="ai-pulse-badge"></span>
+    <svg viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m-8 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9m3 2v2h2v-2H7m8 0v2h2v-2h-2m-5 4v2h4v-2h-4Z"/></svg>
+    ASK GORILLA BOT
+  </button>
+
+  <div id="aiChatWindow" class="ai-chat-window" role="dialog" aria-label="Gorilla Bot chat">
+    <div class="ai-chat-header">
+      <h4>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-gold)"><path d="M12 2a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2m-8 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9m3 2v2h2v-2H7m8 0v2h2v-2h-2m-5 4v2h4v-2h-4Z"/></svg>
+        GORILLA BOT // AI ASSISTANT
+      </h4>
+      <div class="ai-chat-header-actions">
+        <button class="ai-chat-clear" onclick="resetGorillaChat()" title="Clear conversation" aria-label="Clear conversation">&#8635;</button>
+        <button class="ai-chat-close" onclick="toggleAIChat()" aria-label="Close chat">&times;</button>
+      </div>
+    </div>
+
+    <div class="ai-chat-messages" id="aiChatMessages">
+      <div class="chat-msg bot">
+        Hey! I'm <strong>Gorilla Bot</strong> — I know every straw of this build. Ask me about the loops, the funnels, the physics... or the banana. Please ask about the banana.
+      </div>
+    </div>
+
+    <div class="ai-suggestions">
+      <div class="suggestion-chip" onclick="askPreset('Run the marble')">&#9654; Run the marble</div>
+      <div class="suggestion-chip" onclick="askPreset('Show me the photos')">The photos</div>
+      <div class="suggestion-chip" onclick="askPreset('How fast does it go?')">How fast?</div>
+      <div class="suggestion-chip" onclick="askPreset('Why two funnels?')">Why two funnels?</div>
+      <div class="suggestion-chip" onclick="askPreset('Tell me about the banana')">The banana</div>
+    </div>
+
+    <div class="ai-chat-input-area">
+      <input type="text" id="aiUserInput" placeholder="Ask Gorilla Bot a question..." onkeypress="handleKeyPress(event)">
+      <button onclick="sendAIMessage()">SEND</button>
+    </div>
+  </div>
+
+  <!-- GOOGLE TRANSLATE ENGINE SCRIPT -->
+  <script src="js/main.js"></script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  
+
+</body>
+</html>
